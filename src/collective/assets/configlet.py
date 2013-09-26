@@ -51,7 +51,7 @@ class AssetsCPOverviewAdapter(object):
                 continue
             for url in bundle.urls():
                 styles.append('%s [%s]' % (
-                    url, bundle.extra_data.get('media', None)))
+                    url, bundle.extra.get('media', None)))
         return sorted(styles)
 
     @property

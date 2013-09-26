@@ -36,7 +36,7 @@ setup(name='collective.assets',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'webassets',
+          'webassets>=0.8',
           'jsmin',
           'cssmin',
       ],

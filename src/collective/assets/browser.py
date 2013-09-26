@@ -30,10 +30,10 @@ except ImportError:     # pragma: no cover
 
 
 def check(bundle, context):
-    if bundle.extra_data.get('authenticated', False):
+    if bundle.extra.get('authenticated', False):
         portal_state = context.restrictedTraverse('@@plone_portal_state')
         return not portal_state.anonymous()
-    exp = bundle.extra_data.get('expression', False)
+    exp = bundle.extra.get('expression', False)
     if not exp:
         return True
     # XXX evaluateExpression does not need to be
@@ -80,9 +80,9 @@ class StylesView(BaseStylesView):
                 continue
             for url in bundle.urls():
                 styles.append({'rendering': 'link',
-                    'media': bundle.extra_data.get('media', 'screen'),
+                    'media': bundle.extra.get('media', 'screen'),
                     'rel': 'stylesheet',
-                    'rendering': bundle.extra_data.get('rendering', 'link'),
+                    'rendering': bundle.extra.get('rendering', 'link'),
                     'title': None,
                     'conditionalcomment' : '',
                     'src': site_url + url})
@@ -167,11 +167,11 @@ class GenerateAssetsView(BrowserView):
                     bundle = Bundle(*bundle_sheets,
                                     filters=info.filters,
                                     output='gen/packed%s.%s' %  (i, info.suffix))
-                bundle.extra_data['authenticated'] = entry.getAuthenticated()
-                bundle.extra_data['expression'] = entry.getCookedExpression()
+                bundle.extra['authenticated'] = entry.getAuthenticated()
+                bundle.extra['expression'] = entry.getCookedExpression()
                 if info.suffix == 'css':
-                    bundle.extra_data['media'] = entry.getMedia()
-                    bundle.extra_data['rendering'] = entry.getRendering()
+                    bundle.extra['media'] = entry.getMedia()
+                    bundle.extra['rendering'] = entry.getRendering()
                 try:
                     env.register('%s-%s' % (info.suffix, i), bundle)
                 except RegisterError:
