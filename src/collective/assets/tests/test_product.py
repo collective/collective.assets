@@ -3,7 +3,7 @@ import unittest2 as unittest
 
 import zope.component
 from Products.CMFCore.utils import getToolByName
-  
+
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import login
@@ -20,15 +20,15 @@ from webassets.bundle import Bundle
 class TestProduct(unittest.TestCase):
 
     layer = COLLECTIVE_ASSETS_INTEGRATION_TESTING
-    
+
     def setUp(self):
         self.app = self.layer['app']
         self.portal = self.layer['portal']
         self.request = self.layer['request']
         self.qi_tool = getToolByName(self.portal, 'portal_quickinstaller')
-    
+
     def test_product_is_installed(self):
-        """ Validate that our products GS profile has been run and the product 
+        """ Validate that our products GS profile has been run and the product
             installed
         """
         pid = 'collective.assets'
