@@ -72,7 +72,7 @@ class StylesView(BaseStylesView):
         context = aq_inner(self.context)
 
         site_url = getSite().absolute_url()
-        styles = []        
+        styles = []
         for name, bundle in env._named_bundles.iteritems():
             if not name.startswith('css-'):
                 continue
@@ -134,7 +134,7 @@ class GenerateAssetsView(BrowserView):
                 bundle_sheets = []
 
                 # get individual resources of a group and write them
-                # to the file system 
+                # to the file system
                 for eid in subentries:
                     resource = resources[eid]
                     if resource.getConditionalcomment():
@@ -152,7 +152,7 @@ class GenerateAssetsView(BrowserView):
                         m = resource.getMedia()
                         if m:
                             content = '@media %s {\n%s\n}\n' % (m, content)
-            
+
                     f.write(content.encode('utf-8'))
                     f.close()
                     bundle_sheets.append('%s/%s' % (info.suffix, eid))

@@ -45,7 +45,7 @@ class AssetsCPOverviewAdapter(object):
 
     @property
     def css(self):
-        styles = []        
+        styles = []
         for name, bundle in self.env._named_bundles.iteritems():
             if not name.startswith('css-'):
                 continue
@@ -56,7 +56,7 @@ class AssetsCPOverviewAdapter(object):
 
     @property
     def js(self):
-        scripts = []        
+        scripts = []
         for name, bundle in self.env._named_bundles.iteritems():
             if not name.startswith('js-'):
                 continue
