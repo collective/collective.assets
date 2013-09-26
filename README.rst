@@ -20,7 +20,16 @@ webserver running.
 Usage
 -----
 
-To use *collective.assets* add it to the buildout and activate it as an addon
+To use *collective.assets* add it to the buildout. It is important that additional
+to the inclusion of the egg you need to specify a global `resources` directory: ::
+
+ [instance]
+ recipe = plone.recipe.zope2instance
+ resources = ${buildout:directory}/resources
+ eggs += collective.assets
+
+
+After running the buildout activate the package as an addon
 in the Plone control panel. This will give you another entry in the control
 panel: **Assets Settings**
 There you can activate the use of the webassets, change configuration and
