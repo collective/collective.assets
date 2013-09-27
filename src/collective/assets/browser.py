@@ -111,13 +111,12 @@ now = lambda: datetime.datetime.now()
 
 class GenerateAssetsView(BrowserView):
 
-    def __call__(self, force='true'):
+    def generate(self, force='true'):
         context = aq_inner(self.context)
         env = zope.component.getUtility(IWebAssetsEnvironment)
         if force == 'true':
             env.clear()
 
-        start = now()
         # export portal tool content to filesystem and register as assets
         for info in [CSS, JS]:
             tool = getToolByName(context, info.oid)
@@ -178,6 +177,10 @@ class GenerateAssetsView(BrowserView):
                     return ("Failed!\nBundle %s-%s already registered. "
                             "Try force mode to recreate environment.") % (
                             info.suffix, i)
+
+    def __call__(self, force='true'):
+        start = now()
+        self.generate(force='true')
         msg = "Done!\nTook: %s " % (now() - start)
         IStatusMessage(self.request).add(msg)
         return msg

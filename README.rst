@@ -40,7 +40,7 @@ What versions are supported?
 ----------------------------
 
 Collective.assets depend on plone.resource and should work with any recent
-Plone 4. It was developed and tested with Plone 4.2 and 4.3 (trunk). For
+Plone 4. It was developed and tested with Plone 4.2 and 4.3. For
 the assets version 0.8 of the webassets-library was used.
 
 Known issues

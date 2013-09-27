@@ -49,4 +49,8 @@
   <adapter factory=".configlet.AssetsCPConfigAdapter" />
   <adapter factory=".configlet.AssetsCPOverviewAdapter" />
 
+  <subscriber for="ZPublisher.pubevents.PubAfterTraversal"
+              handler=".event.generate_assets" />
+
+
 </configure>

@@ -4,5 +4,11 @@ Changelog
 1.0dev (unreleased)
 -------------------
 
+- Generate assets on PubAfterTraversal event, if not done already
+  [tomgross]
+
+- Update to webassets 0.8
+  [tomgross]
+
 - Package created using zopeskel
-  []
+  [tomgross]
